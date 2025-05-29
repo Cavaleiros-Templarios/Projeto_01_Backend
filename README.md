@@ -35,6 +35,10 @@ A API FastGen permite que o estabelecimento realize o cadastro e gerenciamento d
 ```mermaid
 classDiagram
 direction TB
+    class ProdutoRepository {
+	    +findAllByNomeContainingIgnoreCase(String nome)
+    }
+
     class Produto {
 	    -Long id
 	    -String nome
@@ -42,6 +46,21 @@ direction TB
 	    -String imagem
 	    -int quantidade
 	    -LocalDateTime data
+	    +getId()
+	    +getNome()
+	    +getPreco()
+	    +getImagem()
+	    +getQuantidade()
+	    +getData()
+	    +setId(Long id)
+	    +setNome(String nome)
+	    +setPreco(BigDecimal preco)
+	    +setImagem(String imagem)
+	    +setQuantidade(int quantidade)
+	    +setData(LocalDateTime data)
+    }
+
+    class ProdutoController {
 	    +getAll()
 	    +getById(Long id)
 	    +getAllByNome(String nome)
@@ -49,6 +68,12 @@ direction TB
 	    +put(Produto produto)
 	    +delete(Long id)
     }
+
+	<<Interface>> ProdutoRepository
+
+    ProdutoController -- ProdutoRepository
+
+
 ```
 
 ------
