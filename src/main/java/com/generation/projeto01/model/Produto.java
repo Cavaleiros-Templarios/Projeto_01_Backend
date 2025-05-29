@@ -36,7 +36,7 @@ public class Produto {
     private String imagem;
 
     @Column
-    @NotBlank(message = "A quantidade é obrigatoria!")
+    @NotNull(message = "A quantidade é obrigatoria!")
     private int quantidade;
 
 
